@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My chart.js Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <canvas id="my-chart"></canvas>
+    </div>
+
+    <script>
+        let myChart = document.querySelector("#my-chart").getContext('2d');
+
+        // Global Options
+        Chart.defaults.font.size = 22;
+        Chart.defaults.font.family = 'Lato';
+
+        let massPopChart = new Chart(myChart, {
+            type: 'bar', // bar, bubble, pie, line, doughnut, radar, polarArea
+            data: {
+                labels: [
+                    'Boston',
+                    'Worcester',
+                    'Springfield',
+                    'Lowell',
+                    'Cambridge',
+                    'New Bedford'
+                ],
+                datasets: [{
+                    label: 'Population',
+                    data: [
+                        615789,
+                        181054,
+                        153987,
+                        729252,
+                        308987,
+                        78921
+                    ],
+                    // backgroundColor: 'bada55'  single colour for all bars
+                    backgroundColor: [
+                        'blue',
+                        'green',
+                        'hotpink',
+                        'yellow',
+                        'orangered',
+                        'purple'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#777',
+                    hoverBorderWidth: '4',
+                    hoverBorderColor: 'black'
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Massachusetts Cities Populations',
+                        color: 'brown',
+                        padding: 30,
+                        font: {
+                            size: 40
+                        }
+                    },
+                    legend: {
+                        display: true,
+                        labels: {
+                            font: {
+                                size: 18
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
